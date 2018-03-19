@@ -25,7 +25,7 @@
 
     QDIMMessageTextModel *m = [[QDIMMessageTextModel alloc]init];
     m.showType = 1;
-    m.text = @"改变hr@163.com世界创造价值😱由于子视图是用自动布局的由于https://www.baidu.com子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的子视图不会自我调整021-54377032的要更新他们的约束me@163.com";
+    m.text = @"改变hr@163.com世界创造价值😱由于子视图是用自动布局的由于https://www.baidu❤️.com子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的子视图不会自我调整021-54377032的要更新他们的约束me@163.com";
     QDIMMessageTextViewModel *vm = [[QDIMMessageTextViewModel alloc]initWithTextModel:m];
     
     _textView = [[QDIMMessageTextView alloc]initWithTextViewModel:vm];

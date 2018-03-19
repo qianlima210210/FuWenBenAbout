@@ -106,7 +106,7 @@
     [self performSelector:@selector(longPressOneSecodn) withObject:nil afterDelay:1.0];
     _touchesMovedLocation = point;
     
-    //开始定位
+    //获取字形索引，并在字形索引范围定位
     NSUInteger index = [_layoutManager glyphIndexForPoint:point inTextContainer:_textContainer fractionOfDistanceThroughGlyph:nil];
     
     NSArray *ranges = [[[self urlRanges]arrayByAddingObjectsFromArray:[self phoneNumberRanges]]arrayByAddingObjectsFromArray:[self emailRanges]];
@@ -206,21 +206,21 @@
             
             //判断是否url的点击
             NSArray *urlRanges = [self urlRanges];
-            NSString *urlString = [self getValidClicedWithIndex:index ranges:urlRanges];
+            NSString *urlString = [self getValidClickedStringWithIndex:index ranges:urlRanges];
             if (urlString) {
                 [self clickedType:BYURLClickedTypeOnChatLabel string:urlString];
             }
             
             //判断是否电话号码的点击
             NSArray *phoneNumberRanges = [self phoneNumberRanges];
-            NSString *phoneNumberString = [self getValidClicedWithIndex:index ranges:phoneNumberRanges];
+            NSString *phoneNumberString = [self getValidClickedStringWithIndex:index ranges:phoneNumberRanges];
             if (phoneNumberString) {
                 [self clickedType:BYPhoneNumClickedTypeOnChatLabel string:phoneNumberString];
             }
             
             //判断是否邮箱地址的点击
             NSArray *emailRanges = [self emailRanges];
-            NSString *emailString = [self getValidClicedWithIndex:index ranges:emailRanges];
+            NSString *emailString = [self getValidClickedStringWithIndex:index ranges:emailRanges];
             if (emailString) {
                 [self clickedType:BYEmailClickedTypeOnChatLabel string:emailString];
             }
@@ -234,7 +234,7 @@
 }
 
 //获取有效点击字符串
--(NSString*)getValidClicedWithIndex:(NSInteger)index ranges:(NSArray*)ranges {
+-(NSString*)getValidClickedStringWithIndex:(NSInteger)index ranges:(NSArray*)ranges {
     NSString *result = nil;
     
     for (NSDictionary *item in ranges) {
@@ -343,8 +343,10 @@
     NSMutableArray *ranges = [NSMutableArray array];
     
     for (NSTextCheckingResult *item in matches) {
-        NSRange range = item.range;
-        [ranges addObject:@{@"location": [NSNumber numberWithFloat:range.location], @"length":[NSNumber numberWithFloat:range.length]}];
+        //先转成对应的字形索引范围
+        NSRange glyphRange = [self.layoutManager glyphRangeForCharacterRange:item.range actualCharacterRange:nil];
+        
+        [ranges addObject:@{@"location": [NSNumber numberWithFloat:glyphRange.location], @"length":[NSNumber numberWithFloat:glyphRange.length]}];
     }
     
     return ranges;
@@ -364,8 +366,9 @@
     NSMutableArray *ranges = [NSMutableArray array];
     
     for (NSTextCheckingResult *item in matches) {
-        NSRange range = item.range;
-        [ranges addObject:@{@"location": [NSNumber numberWithFloat:range.location], @"length":[NSNumber numberWithFloat:range.length]}];
+        //先转成对应的字形索引范围
+        NSRange glyphRange = [self.layoutManager glyphRangeForCharacterRange:item.range actualCharacterRange:nil];
+        [ranges addObject:@{@"location": [NSNumber numberWithFloat:glyphRange.location], @"length":[NSNumber numberWithFloat:glyphRange.length]}];
     }
     
     return ranges;
@@ -385,8 +388,9 @@
     NSMutableArray *ranges = [NSMutableArray array];
     
     for (NSTextCheckingResult *item in matches) {
-        NSRange range = item.range;
-        [ranges addObject:@{@"location": [NSNumber numberWithFloat:range.location], @"length":[NSNumber numberWithFloat:range.length]}];
+        //先转成对应的字形索引范围
+        NSRange glyphRange = [self.layoutManager glyphRangeForCharacterRange:item.range actualCharacterRange:nil];
+        [ranges addObject:@{@"location": [NSNumber numberWithFloat:glyphRange.location], @"length":[NSNumber numberWithFloat:glyphRange.length]}];
     }
     
     return ranges;
