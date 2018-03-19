@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E9D91826205A6348008EB319 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D91825205A6348008EB319 /* AppDelegate.m */; };
+		E9D91829205A6348008EB319 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D91828205A6348008EB319 /* ViewController.m */; };
+		E9D9182C205A6348008EB319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9D9182A205A6348008EB319 /* Main.storyboard */; };
+		E9D9182E205A6348008EB319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9D9182D205A6348008EB319 /* Assets.xcassets */; };
+		E9D91831205A6348008EB319 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9D9182F205A6348008EB319 /* LaunchScreen.storyboard */; };
+		E9D91834205A6348008EB319 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D91833205A6348008EB319 /* main.m */; };
+		E9D919FD205A6450008EB319 /* QDIMMessageImgViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919C2205A6450008EB319 /* QDIMMessageImgViewModel.m */; };
+		E9D919FE205A6450008EB319 /* QDIMMessageTextViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919C5205A6450008EB319 /* QDIMMessageTextViewModel.m */; };
+		E9D91A00205A6450008EB319 /* QDIMMessageTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919CB205A6450008EB319 /* QDIMMessageTextModel.m */; };
+		E9D91A01205A6450008EB319 /* QDIMMessageVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919CE205A6450008EB319 /* QDIMMessageVideoModel.m */; };
+		E9D91A02205A6450008EB319 /* QDIMBaseMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919CF205A6450008EB319 /* QDIMBaseMessageModel.m */; };
+		E9D91A03205A6450008EB319 /* QDIMMessageSysTipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919D0205A6450008EB319 /* QDIMMessageSysTipModel.m */; };
+		E9D91A04205A6450008EB319 /* QDIMMessageVoiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919D1205A6450008EB319 /* QDIMMessageVoiceModel.m */; };
+		E9D91A05205A6450008EB319 /* QDIMMessageImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919D3205A6450008EB319 /* QDIMMessageImgModel.m */; };
+		E9D91A06205A6450008EB319 /* QDIMMessageLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919D7205A6450008EB319 /* QDIMMessageLocationModel.m */; };
+		E9D91A0B205A6450008EB319 /* QDIMMessageSysTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919E3205A6450008EB319 /* QDIMMessageSysTipView.m */; };
+		E9D91A0C205A6450008EB319 /* QDIMMessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919E4205A6450008EB319 /* QDIMMessageTextView.m */; };
+		E9D91A0D205A6450008EB319 /* QDIMBaseMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9D919E6205A6450008EB319 /* QDIMBaseMessageCell.xib */; };
+		E9D91A0E205A6450008EB319 /* QDIMMessageImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919EC205A6450008EB319 /* QDIMMessageImgView.m */; };
+		E9D91A0F205A6450008EB319 /* NSAttributedString+AttributedStringHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919F1205A6450008EB319 /* NSAttributedString+AttributedStringHeight.m */; };
+		E9D91A10205A6450008EB319 /* BYChatLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919F2205A6450008EB319 /* BYChatLabel.m */; };
+		E9D91A11205A6450008EB319 /* QDIMMessageViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919F3205A6450008EB319 /* QDIMMessageViewFactory.m */; };
+		E9D91A12205A6450008EB319 /* QDIMBaseMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919F8205A6450008EB319 /* QDIMBaseMessageView.m */; };
+		E9D91A13205A6450008EB319 /* QDIMMessageVoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919F9205A6450008EB319 /* QDIMMessageVoiceView.m */; };
+		E9D91A14205A6450008EB319 /* QDIMBaseMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919FB205A6450008EB319 /* QDIMBaseMessageCell.m */; };
+		E9D91A19205A645F008EB319 /* chat_bubble_received@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D91A17205A645F008EB319 /* chat_bubble_received@2x.png */; };
+		E9D91A1A205A645F008EB319 /* chat_bubble_sended@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D91A18205A645F008EB319 /* chat_bubble_sended@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E9D91821205A6348008EB319 /* TestQDIM20180315.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestQDIM20180315.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9D91824205A6348008EB319 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E9D91825205A6348008EB319 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E9D91827205A6348008EB319 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E9D91828205A6348008EB319 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E9D9182B205A6348008EB319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E9D9182D205A6348008EB319 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E9D91830205A6348008EB319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E9D91832205A6348008EB319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9D91833205A6348008EB319 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E9D919C2205A6450008EB319 /* QDIMMessageImgViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageImgViewModel.m; sourceTree = "<group>"; };
+		E9D919C3205A6450008EB319 /* QDIMMessageTextViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageTextViewModel.h; sourceTree = "<group>"; };
+		E9D919C4205A6450008EB319 /* QDIMMessageImgViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageImgViewModel.h; sourceTree = "<group>"; };
+		E9D919C5205A6450008EB319 /* QDIMMessageTextViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageTextViewModel.m; sourceTree = "<group>"; };
+		E9D919CA205A6450008EB319 /* QDIMMessageImgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageImgModel.h; sourceTree = "<group>"; };
+		E9D919CB205A6450008EB319 /* QDIMMessageTextModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageTextModel.m; sourceTree = "<group>"; };
+		E9D919CC205A6450008EB319 /* QDIMMessageVoiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageVoiceModel.h; sourceTree = "<group>"; };
+		E9D919CD205A6450008EB319 /* QDIMMessageLocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageLocationModel.h; sourceTree = "<group>"; };
+		E9D919CE205A6450008EB319 /* QDIMMessageVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageVideoModel.m; sourceTree = "<group>"; };
+		E9D919CF205A6450008EB319 /* QDIMBaseMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMBaseMessageModel.m; sourceTree = "<group>"; };
+		E9D919D0205A6450008EB319 /* QDIMMessageSysTipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageSysTipModel.m; sourceTree = "<group>"; };
+		E9D919D1205A6450008EB319 /* QDIMMessageVoiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageVoiceModel.m; sourceTree = "<group>"; };
+		E9D919D2205A6450008EB319 /* QDIMMessageTextModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageTextModel.h; sourceTree = "<group>"; };
+		E9D919D3205A6450008EB319 /* QDIMMessageImgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageImgModel.m; sourceTree = "<group>"; };
+		E9D919D4205A6450008EB319 /* QDIMBaseMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMBaseMessageModel.h; sourceTree = "<group>"; };
+		E9D919D5205A6450008EB319 /* QDIMMessageSysTipModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageSysTipModel.h; sourceTree = "<group>"; };
+		E9D919D6205A6450008EB319 /* QDIMMessageVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageVideoModel.h; sourceTree = "<group>"; };
+		E9D919D7205A6450008EB319 /* QDIMMessageLocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageLocationModel.m; sourceTree = "<group>"; };
+		E9D919E3205A6450008EB319 /* QDIMMessageSysTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageSysTipView.m; sourceTree = "<group>"; };
+		E9D919E4205A6450008EB319 /* QDIMMessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageTextView.m; sourceTree = "<group>"; };
+		E9D919E5205A6450008EB319 /* QDIMBaseMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMBaseMessageView.h; sourceTree = "<group>"; };
+		E9D919E6205A6450008EB319 /* QDIMBaseMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QDIMBaseMessageCell.xib; sourceTree = "<group>"; };
+		E9D919EC205A6450008EB319 /* QDIMMessageImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageImgView.m; sourceTree = "<group>"; };
+		E9D919ED205A6450008EB319 /* QDIMBaseMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMBaseMessageCell.h; sourceTree = "<group>"; };
+		E9D919EF205A6450008EB319 /* NSAttributedString+AttributedStringHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+AttributedStringHeight.h"; sourceTree = "<group>"; };
+		E9D919F0205A6450008EB319 /* BYChatLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYChatLabel.h; sourceTree = "<group>"; };
+		E9D919F1205A6450008EB319 /* NSAttributedString+AttributedStringHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+AttributedStringHeight.m"; sourceTree = "<group>"; };
+		E9D919F2205A6450008EB319 /* BYChatLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYChatLabel.m; sourceTree = "<group>"; };
+		E9D919F3205A6450008EB319 /* QDIMMessageViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageViewFactory.m; sourceTree = "<group>"; };
+		E9D919F4205A6450008EB319 /* QDIMMessageVoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageVoiceView.h; sourceTree = "<group>"; };
+		E9D919F5205A6450008EB319 /* QDIMMessageSysTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageSysTipView.h; sourceTree = "<group>"; };
+		E9D919F6205A6450008EB319 /* QDIMMessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageTextView.h; sourceTree = "<group>"; };
+		E9D919F7205A6450008EB319 /* QDIMMessageImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageImgView.h; sourceTree = "<group>"; };
+		E9D919F8205A6450008EB319 /* QDIMBaseMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMBaseMessageView.m; sourceTree = "<group>"; };
+		E9D919F9205A6450008EB319 /* QDIMMessageVoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMMessageVoiceView.m; sourceTree = "<group>"; };
+		E9D919FA205A6450008EB319 /* QDIMMessageViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDIMMessageViewFactory.h; sourceTree = "<group>"; };
+		E9D919FB205A6450008EB319 /* QDIMBaseMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMBaseMessageCell.m; sourceTree = "<group>"; };
+		E9D91A17205A645F008EB319 /* chat_bubble_received@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bubble_received@2x.png"; sourceTree = "<group>"; };
+		E9D91A18205A645F008EB319 /* chat_bubble_sended@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bubble_sended@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E9D9181E205A6348008EB319 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E9D91818205A6348008EB319 = {
+			isa = PBXGroup;
+			children = (
+				E9D91823205A6348008EB319 /* TestQDIM20180315 */,
+				E9D91822205A6348008EB319 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E9D91822205A6348008EB319 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9D91821205A6348008EB319 /* TestQDIM20180315.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E9D91823205A6348008EB319 /* TestQDIM20180315 */ = {
+			isa = PBXGroup;
+			children = (
+				E9D91A16205A645F008EB319 /* TextBubbleBG */,
+				E9D919C0205A6450008EB319 /* Conversation */,
+				E9D91824205A6348008EB319 /* AppDelegate.h */,
+				E9D91825205A6348008EB319 /* AppDelegate.m */,
+				E9D91827205A6348008EB319 /* ViewController.h */,
+				E9D91828205A6348008EB319 /* ViewController.m */,
+				E9D9182A205A6348008EB319 /* Main.storyboard */,
+				E9D9182D205A6348008EB319 /* Assets.xcassets */,
+				E9D9182F205A6348008EB319 /* LaunchScreen.storyboard */,
+				E9D91832205A6348008EB319 /* Info.plist */,
+				E9D91833205A6348008EB319 /* main.m */,
+			);
+			path = TestQDIM20180315;
+			sourceTree = "<group>";
+		};
+		E9D919C0205A6450008EB319 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				E9D919C1205A6450008EB319 /* ViewModel */,
+				E9D919C9205A6450008EB319 /* Model */,
+				E9D919D8205A6450008EB319 /* View */,
+			);
+			name = Conversation;
+			path = QDIM/Classes/IMKit/Conversation;
+			sourceTree = "<group>";
+		};
+		E9D919C1205A6450008EB319 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E9D919C4205A6450008EB319 /* QDIMMessageImgViewModel.h */,
+				E9D919C2205A6450008EB319 /* QDIMMessageImgViewModel.m */,
+				E9D919C3205A6450008EB319 /* QDIMMessageTextViewModel.h */,
+				E9D919C5205A6450008EB319 /* QDIMMessageTextViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E9D919C9205A6450008EB319 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E9D919D2205A6450008EB319 /* QDIMMessageTextModel.h */,
+				E9D919CB205A6450008EB319 /* QDIMMessageTextModel.m */,
+				E9D919CA205A6450008EB319 /* QDIMMessageImgModel.h */,
+				E9D919CC205A6450008EB319 /* QDIMMessageVoiceModel.h */,
+				E9D919CD205A6450008EB319 /* QDIMMessageLocationModel.h */,
+				E9D919CE205A6450008EB319 /* QDIMMessageVideoModel.m */,
+				E9D919CF205A6450008EB319 /* QDIMBaseMessageModel.m */,
+				E9D919D0205A6450008EB319 /* QDIMMessageSysTipModel.m */,
+				E9D919D1205A6450008EB319 /* QDIMMessageVoiceModel.m */,
+				E9D919D3205A6450008EB319 /* QDIMMessageImgModel.m */,
+				E9D919D4205A6450008EB319 /* QDIMBaseMessageModel.h */,
+				E9D919D5205A6450008EB319 /* QDIMMessageSysTipModel.h */,
+				E9D919D6205A6450008EB319 /* QDIMMessageVideoModel.h */,
+				E9D919D7205A6450008EB319 /* QDIMMessageLocationModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E9D919D8205A6450008EB319 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E9D919E2205A6450008EB319 /* Message */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E9D919E2205A6450008EB319 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				E9D919E3205A6450008EB319 /* QDIMMessageSysTipView.m */,
+				E9D919F6205A6450008EB319 /* QDIMMessageTextView.h */,
+				E9D919E4205A6450008EB319 /* QDIMMessageTextView.m */,
+				E9D919E5205A6450008EB319 /* QDIMBaseMessageView.h */,
+				E9D919E6205A6450008EB319 /* QDIMBaseMessageCell.xib */,
+				E9D919EC205A6450008EB319 /* QDIMMessageImgView.m */,
+				E9D919ED205A6450008EB319 /* QDIMBaseMessageCell.h */,
+				E9D919EE205A6450008EB319 /* BYChatLabel */,
+				E9D919F3205A6450008EB319 /* QDIMMessageViewFactory.m */,
+				E9D919F4205A6450008EB319 /* QDIMMessageVoiceView.h */,
+				E9D919F5205A6450008EB319 /* QDIMMessageSysTipView.h */,
+				E9D919F7205A6450008EB319 /* QDIMMessageImgView.h */,
+				E9D919F8205A6450008EB319 /* QDIMBaseMessageView.m */,
+				E9D919F9205A6450008EB319 /* QDIMMessageVoiceView.m */,
+				E9D919FA205A6450008EB319 /* QDIMMessageViewFactory.h */,
+				E9D919FB205A6450008EB319 /* QDIMBaseMessageCell.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		E9D919EE205A6450008EB319 /* BYChatLabel */ = {
+			isa = PBXGroup;
+			children = (
+				E9D919EF205A6450008EB319 /* NSAttributedString+AttributedStringHeight.h */,
+				E9D919F0205A6450008EB319 /* BYChatLabel.h */,
+				E9D919F1205A6450008EB319 /* NSAttributedString+AttributedStringHeight.m */,
+				E9D919F2205A6450008EB319 /* BYChatLabel.m */,
+			);
+			path = BYChatLabel;
+			sourceTree = "<group>";
+		};
+		E9D91A16205A645F008EB319 /* TextBubbleBG */ = {
+			isa = PBXGroup;
+			children = (
+				E9D91A17205A645F008EB319 /* chat_bubble_received@2x.png */,
+				E9D91A18205A645F008EB319 /* chat_bubble_sended@2x.png */,
+			);
+			name = TextBubbleBG;
+			path = QDIM/Resources/TextBubbleBG;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E9D91820205A6348008EB319 /* TestQDIM20180315 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9D91837205A6348008EB319 /* Build configuration list for PBXNativeTarget "TestQDIM20180315" */;
+			buildPhases = (
+				E9D9181D205A6348008EB319 /* Sources */,
+				E9D9181E205A6348008EB319 /* Frameworks */,
+				E9D9181F205A6348008EB319 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestQDIM20180315;
+			productName = TestQDIM20180315;
+			productReference = E9D91821205A6348008EB319 /* TestQDIM20180315.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E9D91819205A6348008EB319 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = QDHL;
+				TargetAttributes = {
+					E9D91820205A6348008EB319 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E9D9181C205A6348008EB319 /* Build configuration list for PBXProject "TestQDIM20180315" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E9D91818205A6348008EB319;
+			productRefGroup = E9D91822205A6348008EB319 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E9D91820205A6348008EB319 /* TestQDIM20180315 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E9D9181F205A6348008EB319 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9D91A1A205A645F008EB319 /* chat_bubble_sended@2x.png in Resources */,
+				E9D91A0D205A6450008EB319 /* QDIMBaseMessageCell.xib in Resources */,
+				E9D91A19205A645F008EB319 /* chat_bubble_received@2x.png in Resources */,
+				E9D91831205A6348008EB319 /* LaunchScreen.storyboard in Resources */,
+				E9D9182E205A6348008EB319 /* Assets.xcassets in Resources */,
+				E9D9182C205A6348008EB319 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E9D9181D205A6348008EB319 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9D91A03205A6450008EB319 /* QDIMMessageSysTipModel.m in Sources */,
+				E9D91A04205A6450008EB319 /* QDIMMessageVoiceModel.m in Sources */,
+				E9D91A10205A6450008EB319 /* BYChatLabel.m in Sources */,
+				E9D91A02205A6450008EB319 /* QDIMBaseMessageModel.m in Sources */,
+				E9D919FE205A6450008EB319 /* QDIMMessageTextViewModel.m in Sources */,
+				E9D91829205A6348008EB319 /* ViewController.m in Sources */,
+				E9D91A0E205A6450008EB319 /* QDIMMessageImgView.m in Sources */,
+				E9D91A01205A6450008EB319 /* QDIMMessageVideoModel.m in Sources */,
+				E9D91A05205A6450008EB319 /* QDIMMessageImgModel.m in Sources */,
+				E9D919FD205A6450008EB319 /* QDIMMessageImgViewModel.m in Sources */,
+				E9D91A11205A6450008EB319 /* QDIMMessageViewFactory.m in Sources */,
+				E9D91A14205A6450008EB319 /* QDIMBaseMessageCell.m in Sources */,
+				E9D91A0C205A6450008EB319 /* QDIMMessageTextView.m in Sources */,
+				E9D91A0B205A6450008EB319 /* QDIMMessageSysTipView.m in Sources */,
+				E9D91A06205A6450008EB319 /* QDIMMessageLocationModel.m in Sources */,
+				E9D91A00205A6450008EB319 /* QDIMMessageTextModel.m in Sources */,
+				E9D91A12205A6450008EB319 /* QDIMBaseMessageView.m in Sources */,
+				E9D91A13205A6450008EB319 /* QDIMMessageVoiceView.m in Sources */,
+				E9D91834205A6348008EB319 /* main.m in Sources */,
+				E9D91A0F205A6450008EB319 /* NSAttributedString+AttributedStringHeight.m in Sources */,
+				E9D91826205A6348008EB319 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E9D9182A205A6348008EB319 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9D9182B205A6348008EB319 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E9D9182F205A6348008EB319 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9D91830205A6348008EB319 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E9D91835205A6348008EB319 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E9D91836205A6348008EB319 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E9D91838205A6348008EB319 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 736T58M9ZN;
+				INFOPLIST_FILE = TestQDIM20180315/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qding.TestQDIM20180315;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E9D91839205A6348008EB319 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 736T58M9ZN;
+				INFOPLIST_FILE = TestQDIM20180315/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qding.TestQDIM20180315;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E9D9181C205A6348008EB319 /* Build configuration list for PBXProject "TestQDIM20180315" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9D91835205A6348008EB319 /* Debug */,
+				E9D91836205A6348008EB319 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9D91837205A6348008EB319 /* Build configuration list for PBXNativeTarget "TestQDIM20180315" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9D91838205A6348008EB319 /* Debug */,
+				E9D91839205A6348008EB319 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E9D91819205A6348008EB319 /* Project object */;
+}
