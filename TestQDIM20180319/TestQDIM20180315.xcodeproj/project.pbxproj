@@ -34,6 +34,7 @@
 		E9D91A14205A6450008EB319 /* QDIMBaseMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919FB205A6450008EB319 /* QDIMBaseMessageCell.m */; };
 		E9D91A19205A645F008EB319 /* chat_bubble_received@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D91A17205A645F008EB319 /* chat_bubble_received@2x.png */; };
 		E9D91A1A205A645F008EB319 /* chat_bubble_sended@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D91A18205A645F008EB319 /* chat_bubble_sended@2x.png */; };
+		E9F8E254205FEF68003831A4 /* CTRunUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8E253205FEF68003831A4 /* CTRunUrl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,8 @@
 		E9D919FB205A6450008EB319 /* QDIMBaseMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMBaseMessageCell.m; sourceTree = "<group>"; };
 		E9D91A17205A645F008EB319 /* chat_bubble_received@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bubble_received@2x.png"; sourceTree = "<group>"; };
 		E9D91A18205A645F008EB319 /* chat_bubble_sended@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bubble_sended@2x.png"; sourceTree = "<group>"; };
+		E9F8E252205FEF68003831A4 /* CTRunUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTRunUrl.h; sourceTree = "<group>"; };
+		E9F8E253205FEF68003831A4 /* CTRunUrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTRunUrl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				E9D9182F205A6348008EB319 /* LaunchScreen.storyboard */,
 				E9D91832205A6348008EB319 /* Info.plist */,
 				E9D91833205A6348008EB319 /* main.m */,
+				E9F8E252205FEF68003831A4 /* CTRunUrl.h */,
+				E9F8E253205FEF68003831A4 /* CTRunUrl.m */,
 			);
 			path = TestQDIM20180315;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9F8E254205FEF68003831A4 /* CTRunUrl.m in Sources */,
 				E9D91A03205A6450008EB319 /* QDIMMessageSysTipModel.m in Sources */,
 				E9D91A04205A6450008EB319 /* QDIMMessageVoiceModel.m in Sources */,
 				E9D91A10205A6450008EB319 /* BYChatLabel.m in Sources */,

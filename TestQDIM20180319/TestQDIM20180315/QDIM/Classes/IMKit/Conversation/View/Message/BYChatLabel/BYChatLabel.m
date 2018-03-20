@@ -61,7 +61,7 @@
 }
 
 -(BOOL)canPerformAction:(SEL)action withSender:(id)sender{
-    return action == @selector(fuZhi) || action == @selector(zhuanFa) || action == @selector(shouCang) ||
+    return action == @selector(fuZhi) || action == @selector(quanXuan) || action == @selector(shouCang) ||
     action == @selector(shanChu) || action == @selector(tiXing) || action == @selector(duoXuan);
 }
 
@@ -145,9 +145,9 @@
  */
 -(void)showMenu{
     [self becomeFirstResponder];
-    NSArray *items = @[@"复制", @"转发", @"收藏", @"删除", @"提醒", @"多选"];
+    NSArray *items = @[@"复制", @"全选", @"收藏", @"删除", @"提醒", @"多选"];
     UIMenuItem *fuZhi = [[UIMenuItem alloc]initWithTitle:items[0] action:@selector(fuZhi)];
-    UIMenuItem *zhuanFa = [[UIMenuItem alloc]initWithTitle:items[1] action:@selector(zhuanFa)];
+    UIMenuItem *zhuanFa = [[UIMenuItem alloc]initWithTitle:items[1] action:@selector(quanXuan)];
     UIMenuItem *shouCang = [[UIMenuItem alloc]initWithTitle:items[2] action:@selector(shouCang)];
     UIMenuItem *shanChu = [[UIMenuItem alloc]initWithTitle:items[3] action:@selector(shanChu)];
     UIMenuItem *tiXing = [[UIMenuItem alloc]initWithTitle:items[4] action:@selector(tiXing)];
@@ -160,7 +160,7 @@
 
 -(void)fuZhi{
 }
--(void)zhuanFa{
+-(void)quanXuan{
 }
 -(void)shouCang{
 }

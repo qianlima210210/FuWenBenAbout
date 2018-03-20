@@ -15,7 +15,7 @@
 //用来生成属性文本的字体
 @property (nonatomic, strong) UIFont *font;
 //为标签准备的属性文本
-@property (nonatomic, strong) NSAttributedString *attributedText;
+@property (nonatomic, strong) NSMutableAttributedString *attributedText;
 
 //文本视图高度
 @property CGFloat height;

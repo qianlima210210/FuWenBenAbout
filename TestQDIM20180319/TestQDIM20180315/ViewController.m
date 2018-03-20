@@ -10,6 +10,7 @@
 #import "QDIMMessageTextModel.h"
 #import "QDIMMessageTextViewModel.h"
 #import "QDIMMessageTextView.h"
+#import "CTRunUrl.h"
 
 @interface ViewController ()
 
@@ -25,7 +26,7 @@
 
     QDIMMessageTextModel *m = [[QDIMMessageTextModel alloc]init];
     m.showType = 1;
-    m.text = @"改变hr@163.com世界创造价值😱由于子视图是用自动布局的由于https://www.baidu❤️.com子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的子视图不会自我调整021-54377032的要更新他们的约束me@163.com";
+    m.text = @"改变hr@163.com世界创造价值😱由于子视图是用自动布局的由于https://www.baidu❤️.com子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的子视图不会自我调整021-54377032的要更新他们的约束me@163.com❤️";
     QDIMMessageTextViewModel *vm = [[QDIMMessageTextViewModel alloc]initWithTextModel:m];
     
     _textView = [[QDIMMessageTextView alloc]initWithTextViewModel:vm];
@@ -33,6 +34,23 @@
     _textView.frame = CGRectMake(30, 100, 300, 200);
     //_textView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:_textView];
+    
+    
+    __block NSInteger index = 0;
+    [vm.attributedText.string enumerateSubstringsInRange:NSMakeRange(0, [vm.attributedText length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:
+     ^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+
+        NSString *urlStr = [NSString stringWithFormat:@"https://www.Label%@",@(index)];
+        CTRunUrl *runUrl = [CTRunUrl URLWithString:urlStr];
+         
+         runUrl.index = index;
+         runUrl.rangValue = [NSValue valueWithRange:substringRange];
+         [vm.attributedText addAttribute:NSLinkAttributeName
+                         value:runUrl
+                         range:substringRange];
+         index++;
+         NSLog(@"length=%ld", index);
+     }];
     
 //    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:_textView
 //                                                           attribute:NSLayoutAttributeTop
@@ -69,8 +87,8 @@
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [_textView layoutSubViewWithMaxWidth:315.0];
+    //NSLog(@"%@", _textView);
     
-    NSLog(@"%@", _textView);
 }
 
 
