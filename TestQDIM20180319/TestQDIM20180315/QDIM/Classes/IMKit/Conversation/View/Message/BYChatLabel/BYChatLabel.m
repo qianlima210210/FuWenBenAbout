@@ -184,49 +184,76 @@
         [self setNeedsDisplay];
     }
     
-    if(_longPressValid){//优先处理长按
-        
-    }else {
-        //取消定时perform
+    if(_longPressValid){//长按已生效
+        [self resetTouchBiaoJi];
+    }else {//长按还未生效
+        //取消长按定时perform
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(longPressOneSecodn) object:nil];
         
-        //先获取最后一个字符的位置
-        CGRect lastCharFrame = [self characterRectAtIndex:_textStorage.length - 1];
+        //取消单击定时perform
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(handleDoubleTap:) object:nil];
         
         //获取点击对应索引
         CGPoint point = [touches.anyObject locationInView:self];
         
-        //触摸位置是否有效
-        CGFloat maxX = lastCharFrame.origin.x + lastCharFrame.size.width;
-        CGFloat maxY = lastCharFrame.origin.y + lastCharFrame.size.height;
-        if((point.y > maxY) || (point.x > maxX && point.y > lastCharFrame.origin.y)){//无效点
-            
-        }else {
-            NSUInteger index = [_layoutManager glyphIndexForPoint:point inTextContainer:_textContainer fractionOfDistanceThroughGlyph:nil];
-            
-            //判断是否url的点击
-            NSArray *urlRanges = [self urlRanges];
-            NSString *urlString = [self getValidClickedStringWithIndex:index ranges:urlRanges];
-            if (urlString) {
-                [self clickedType:BYURLClickedTypeOnChatLabel string:urlString];
-            }
-            
-            //判断是否电话号码的点击
-            NSArray *phoneNumberRanges = [self phoneNumberRanges];
-            NSString *phoneNumberString = [self getValidClickedStringWithIndex:index ranges:phoneNumberRanges];
-            if (phoneNumberString) {
-                [self clickedType:BYPhoneNumClickedTypeOnChatLabel string:phoneNumberString];
-            }
-            
-            //判断是否邮箱地址的点击
-            NSArray *emailRanges = [self emailRanges];
-            NSString *emailString = [self getValidClickedStringWithIndex:index ranges:emailRanges];
-            if (emailString) {
-                [self clickedType:BYEmailClickedTypeOnChatLabel string:emailString];
-            }
+        if (touches.anyObject.tapCount == 1) {//单击
+           [self performSelector:@selector(handleSingleTap:) withObject:[NSValue valueWithCGPoint:point] afterDelay:0.3];
+        }else if (touches.anyObject.tapCount == 2){//双击
+            [self handleDoubleTap:[NSValue valueWithCGPoint:point]];
         }
     }
     
+}
+
+
+//单击处理
+-(void)handleSingleTap: (NSValue*)value{
+    CGPoint point = value.CGPointValue;
+    
+    //先获取最后一个字符的位置
+    CGRect lastCharFrame = [self characterRectAtIndex:_textStorage.length - 1];
+    
+    //触摸位置是否有效
+    CGFloat maxX = lastCharFrame.origin.x + lastCharFrame.size.width;
+    CGFloat maxY = lastCharFrame.origin.y + lastCharFrame.size.height;
+    if((point.y > maxY) || (point.x > maxX && point.y > lastCharFrame.origin.y)){//无效点
+        
+    }else {
+        NSUInteger index = [_layoutManager glyphIndexForPoint:point inTextContainer:_textContainer fractionOfDistanceThroughGlyph:nil];
+        
+        //判断是否url的点击
+        NSArray *urlRanges = [self urlRanges];
+        NSString *urlString = [self getValidClickedStringWithIndex:index ranges:urlRanges];
+        if (urlString) {
+            [self clickedType:BYURLClickedTypeOnChatLabel string:urlString];
+        }
+        
+        //判断是否电话号码的点击
+        NSArray *phoneNumberRanges = [self phoneNumberRanges];
+        NSString *phoneNumberString = [self getValidClickedStringWithIndex:index ranges:phoneNumberRanges];
+        if (phoneNumberString) {
+            [self clickedType:BYPhoneNumClickedTypeOnChatLabel string:phoneNumberString];
+        }
+        
+        //判断是否邮箱地址的点击
+        NSArray *emailRanges = [self emailRanges];
+        NSString *emailString = [self getValidClickedStringWithIndex:index ranges:emailRanges];
+        if (emailString) {
+            [self clickedType:BYEmailClickedTypeOnChatLabel string:emailString];
+        }
+    }
+    
+    [self resetTouchBiaoJi];
+}
+
+//双击击处理
+-(void)handleDoubleTap: (NSValue*)value{
+    NSLog(@"handleDoubleTap");
+    [self resetTouchBiaoJi];
+}
+
+//恢复触摸标记
+-(void)resetTouchBiaoJi{
     //最后恢复_touchesBeganLocationMapRange、_touchesBeganLocation、_longPressValid
     _touchesBeganLocationMapRange = NSMakeRange(0, 0);
     _touchesMovedLocation = CGPointZero;
