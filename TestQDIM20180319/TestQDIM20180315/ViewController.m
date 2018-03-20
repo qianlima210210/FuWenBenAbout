@@ -14,7 +14,9 @@
 
 @interface ViewController ()
 
-@property (nonatomic, strong) QDIMMessageTextView* textView;
+@property (nonatomic, strong) QDIMMessageTextView *textView;
+@property (nonatomic, strong) QDIMMessageTextModel *m;
+@property (nonatomic, strong) QDIMMessageTextViewModel *vm;
 
 @end
 
@@ -24,12 +26,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-    QDIMMessageTextModel *m = [[QDIMMessageTextModel alloc]init];
-    m.showType = 1;
-    m.text = @"改变hr@163.com世界创造价值😱由于子视图是用自动布局的由于https://www.baidu❤️.com子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的子视图不会自我调整021-54377032的要更新他们的约束me@163.com❤️";
-    QDIMMessageTextViewModel *vm = [[QDIMMessageTextViewModel alloc]initWithTextModel:m];
+    _m = [[QDIMMessageTextModel alloc]init];
+    _m.showType = 1;
+    _m.text = @"改变hr@163.com世界创造价值😱由于子视图是用自动布局的由于https://www.baidu❤️.com子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的子视图不会自我调整021-54377032的要更新他们的约束me@163.com❤️";
+    _vm = [[QDIMMessageTextViewModel alloc]initWithTextModel:_m];
     
-    _textView = [[QDIMMessageTextView alloc]initWithTextViewModel:vm];
+    _textView = [[QDIMMessageTextView alloc]initWithTextViewModel:_vm];
     //_textView.backgroundColor = UIColor.redColor;
     _textView.frame = CGRectMake(30, 100, 300, 200);
     //_textView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -37,7 +39,7 @@
     
     
     __block NSInteger index = 0;
-    [vm.attributedText.string enumerateSubstringsInRange:NSMakeRange(0, [vm.attributedText length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:
+    [_vm.attributedText.string enumerateSubstringsInRange:NSMakeRange(0, [_vm.attributedText length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:
      ^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
 
         NSString *urlStr = [NSString stringWithFormat:@"https://www.Label%@",@(index)];
@@ -45,7 +47,7 @@
          
          runUrl.index = index;
          runUrl.rangValue = [NSValue valueWithRange:substringRange];
-         [vm.attributedText addAttribute:NSLinkAttributeName
+         [_vm.attributedText addAttribute:NSLinkAttributeName
                          value:runUrl
                          range:substringRange];
          index++;
@@ -87,8 +89,9 @@
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [_textView layoutSubViewWithMaxWidth:315.0];
-    //NSLog(@"%@", _textView);
+    NSLog(@"%@", _textView);
     
+    NSLog(@"height = %f", [QDIMMessageTextView viewHeight:_m maxWidth:315.0]);
 }
 
 

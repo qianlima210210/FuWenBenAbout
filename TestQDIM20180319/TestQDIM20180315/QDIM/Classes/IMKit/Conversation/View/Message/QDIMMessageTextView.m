@@ -35,6 +35,28 @@
     }
 }
 
++ (CGFloat)viewHeight:(QDIMBaseMessageModel *)messageModel maxWidth:(CGFloat)maxWidth{
+    QDIMMessageTextViewModel *vm = [[QDIMMessageTextViewModel alloc]initWithTextModel:(QDIMMessageTextModel*)messageModel];
+    
+    //获取chatLabel属性文本高度、宽度
+    UITextView *view=[[UITextView alloc] init];
+    view.textContainer.lineFragmentPadding = 0;
+    view.attributedText = vm.attributedText;
+    
+    CGFloat allWidthMargin = 10.0 + 5.0;
+    CGFloat allHeightMargin = 5.0 + 5.0;
+    CGSize size=[view sizeThatFits:CGSizeMake(maxWidth - allWidthMargin, CGFLOAT_MAX)];
+    
+    CGFloat heightOfChatLabel = size.height - 16;
+    //CGFloat widthOfChatLabel = size.width;
+    
+    //开始计算自身高度、宽度
+    CGFloat heithtOfself = heightOfChatLabel + allHeightMargin;
+    //CGFloat widthOfself = widthOfChatLabel + allWidthMargin;
+    
+    return heithtOfself;
+}
+
 /**
  初始化消息文本视图
 
