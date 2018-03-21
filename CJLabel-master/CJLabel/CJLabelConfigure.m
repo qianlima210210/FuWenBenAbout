@@ -671,7 +671,7 @@ typedef NS_ENUM(NSInteger, CJSelectViewAction) {
 }
 
 - (void)updatePinLayer:(CGContextRef)ctx point:(CGPoint)point height:(CGFloat)height isLeft:(BOOL)isLeft {
-    UIColor *color = [UIColor colorWithRed:0/255.0 green:128/255.0 blue:255/255.0 alpha:1.0];
+    UIColor *color = UIColor.redColor;//[UIColor colorWithRed:0/255.0 green:128/255.0 blue:255/255.0 alpha:1.0];
     CGRect roundRect = CGRectMake(point.x - 5,
                                   isLeft?(point.y - 10):(point.y + height),
                                   10,

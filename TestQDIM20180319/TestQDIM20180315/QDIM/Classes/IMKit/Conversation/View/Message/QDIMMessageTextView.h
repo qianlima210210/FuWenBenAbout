@@ -4,11 +4,13 @@
 //
 //  Created by QDHL on 2018/3/14.
 //
-
+#import "BYChatLabel.h"
 #import "QDIMBaseMessageView.h"
 #import "QDIMMessageTextViewModel.h"
 
 @interface QDIMMessageTextView : QDIMBaseMessageView
+
+@property (strong, nonatomic) BYChatLabel *chatLabel;
 
 /**
  初始化消息文本视图

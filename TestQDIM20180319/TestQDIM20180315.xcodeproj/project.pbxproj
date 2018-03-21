@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E96737A42062473E0074DC77 /* CTRunItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E96737A32062473E0074DC77 /* CTRunItem.m */; };
 		E9D91826205A6348008EB319 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D91825205A6348008EB319 /* AppDelegate.m */; };
 		E9D91829205A6348008EB319 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D91828205A6348008EB319 /* ViewController.m */; };
 		E9D9182C205A6348008EB319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9D9182A205A6348008EB319 /* Main.storyboard */; };
@@ -34,10 +35,11 @@
 		E9D91A14205A6450008EB319 /* QDIMBaseMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D919FB205A6450008EB319 /* QDIMBaseMessageCell.m */; };
 		E9D91A19205A645F008EB319 /* chat_bubble_received@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D91A17205A645F008EB319 /* chat_bubble_received@2x.png */; };
 		E9D91A1A205A645F008EB319 /* chat_bubble_sended@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D91A18205A645F008EB319 /* chat_bubble_sended@2x.png */; };
-		E9F8E254205FEF68003831A4 /* CTRunUrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8E253205FEF68003831A4 /* CTRunUrl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E96737A22062473E0074DC77 /* CTRunItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTRunItem.h; sourceTree = "<group>"; };
+		E96737A32062473E0074DC77 /* CTRunItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTRunItem.m; sourceTree = "<group>"; };
 		E9D91821205A6348008EB319 /* TestQDIM20180315.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestQDIM20180315.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9D91824205A6348008EB319 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E9D91825205A6348008EB319 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,8 +89,6 @@
 		E9D919FB205A6450008EB319 /* QDIMBaseMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDIMBaseMessageCell.m; sourceTree = "<group>"; };
 		E9D91A17205A645F008EB319 /* chat_bubble_received@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bubble_received@2x.png"; sourceTree = "<group>"; };
 		E9D91A18205A645F008EB319 /* chat_bubble_sended@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bubble_sended@2x.png"; sourceTree = "<group>"; };
-		E9F8E252205FEF68003831A4 /* CTRunUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTRunUrl.h; sourceTree = "<group>"; };
-		E9F8E253205FEF68003831A4 /* CTRunUrl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTRunUrl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +132,8 @@
 				E9D9182F205A6348008EB319 /* LaunchScreen.storyboard */,
 				E9D91832205A6348008EB319 /* Info.plist */,
 				E9D91833205A6348008EB319 /* main.m */,
-				E9F8E252205FEF68003831A4 /* CTRunUrl.h */,
-				E9F8E253205FEF68003831A4 /* CTRunUrl.m */,
+				E96737A22062473E0074DC77 /* CTRunItem.h */,
+				E96737A32062473E0074DC77 /* CTRunItem.m */,
 			);
 			path = TestQDIM20180315;
 			sourceTree = "<group>";
@@ -307,7 +307,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9F8E254205FEF68003831A4 /* CTRunUrl.m in Sources */,
 				E9D91A03205A6450008EB319 /* QDIMMessageSysTipModel.m in Sources */,
 				E9D91A04205A6450008EB319 /* QDIMMessageVoiceModel.m in Sources */,
 				E9D91A10205A6450008EB319 /* BYChatLabel.m in Sources */,
@@ -325,6 +324,7 @@
 				E9D91A06205A6450008EB319 /* QDIMMessageLocationModel.m in Sources */,
 				E9D91A00205A6450008EB319 /* QDIMMessageTextModel.m in Sources */,
 				E9D91A12205A6450008EB319 /* QDIMBaseMessageView.m in Sources */,
+				E96737A42062473E0074DC77 /* CTRunItem.m in Sources */,
 				E9D91A13205A6450008EB319 /* QDIMMessageVoiceView.m in Sources */,
 				E9D91834205A6348008EB319 /* main.m in Sources */,
 				E9D91A0F205A6450008EB319 /* NSAttributedString+AttributedStringHeight.m in Sources */,

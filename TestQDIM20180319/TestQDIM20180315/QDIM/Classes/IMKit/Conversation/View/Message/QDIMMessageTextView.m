@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSLayoutConstraint *widthConstraintOfTextBubbleBGImageView;
 @property (strong, nonatomic) NSLayoutConstraint *heightConstraintOfTextBubbleBGImageView;
 
-@property (strong, nonatomic) BYChatLabel *chatLabel;
+
 @property CGFloat chatLabelLeftMargin;
 @property CGFloat chatLabelRightMargin;
 @property CGFloat chatLabelTopMargin;
@@ -43,8 +43,8 @@
     view.textContainer.lineFragmentPadding = 0;
     view.attributedText = vm.attributedText;
     
-    CGFloat allWidthMargin = 10.0 + 5.0;
-    CGFloat allHeightMargin = 5.0 + 5.0;
+    CGFloat allWidthMargin = 15.0 + 10.0;
+    CGFloat allHeightMargin = 10.0 + 10.0;
     CGSize size=[view sizeThatFits:CGSizeMake(maxWidth - allWidthMargin, CGFLOAT_MAX)];
     
     CGFloat heightOfChatLabel = size.height - 16;
@@ -66,18 +66,19 @@
 -(instancetype)initWithTextViewModel: (QDIMMessageTextViewModel*)textViewModel {
     self = [super init];
     if (self != nil) {
+        self.clipsToBounds=NO;
         _maxWidth = 0.0;
         _textViewModel = textViewModel;
         
         if (textViewModel.textModel.showType == 0) {
-            _chatLabelLeftMargin = 10.0;
-            _chatLabelRightMargin = 5.0;
-        }else{
-            _chatLabelLeftMargin = 5.0;
+            _chatLabelLeftMargin = 15.0;
             _chatLabelRightMargin = 10.0;
+        }else{
+            _chatLabelLeftMargin = 10.0;
+            _chatLabelRightMargin = 15.0;
         }
-        _chatLabelTopMargin = 5;
-        _chatLabelBottomMargin = 5;
+        _chatLabelTopMargin = 10;
+        _chatLabelBottomMargin = 10;
         
         [self initSubViews];
     }
