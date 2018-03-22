@@ -13,9 +13,16 @@
 #import "CTRunItem.h"
 
 @interface SelectedView : UIView
-
+//起点、终点项
 @property (nonatomic, strong) CTRunItem *first;
-@property (nonatomic, strong)  CTRunItem *last;
+@property (nonatomic, strong) CTRunItem *last;
+//所有项数组
+@property (nonatomic, strong) NSMutableArray *glyphRangeArray;
+
+@property (nonatomic, strong) BYChatLabel *chatLabel;
+
+//大头针半径
+@property CGFloat radiusOfPin;
 
 @end
 
@@ -26,8 +33,44 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.opaque = NO;
+        
+        _radiusOfPin = 5.0;
     }
     return self;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    //获取开始位置
+    CGPoint point = [touches.anyObject locationInView:self];
+    
+    //判断这个点位于情况：1、在两个大头针之外；2、在两个大头针内，但是不在大头针上；3、在大头针上
+    //只处理3
+    CGPoint firstPoint = [self.layer convertPoint:self.first.rect.origin fromLayer:_chatLabel.layer];
+    CGRect firstRect = CGRectMake(firstPoint.x - _radiusOfPin,
+                                  firstPoint.y - _radiusOfPin * 2,
+                                  _radiusOfPin * 2,
+                                  self.first.rect.size.height + _radiusOfPin * 2);
+    if (CGRectContainsPoint(firstRect, point)) {
+        NSLog(@"呵呵，你摸到了左边大头针");
+    }
+    
+    CGPoint lastPoint = [self.layer convertPoint:self.last.rect.origin fromLayer:_chatLabel.layer];
+    CGRect lastRect = CGRectMake(lastPoint.x + self.last.rect.size.width  - _radiusOfPin,
+                                 lastPoint.y,
+                                 _radiusOfPin * 2,
+                                 self.last.rect.size.height + _radiusOfPin * 2);
+    if (CGRectContainsPoint(lastRect, point)) {
+        NSLog(@"呵呵，你摸到了右边大头针");
+    }
+}
+
+-(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    
+}
+
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
 }
 
 -(void)drawRect:(CGRect)rect{
@@ -35,32 +78,38 @@
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
-    //将origin从标签坐标系转到其父视图坐标系
-    //[self.blueLayer convertPoint:point fromLayer:self.layerView.layer]
-    QDIMMessageTextView *textView =  (QDIMMessageTextView *)self.superview;
+    //将origin从标签坐标系转到自己坐标系
+    CGPoint firstPoint = [self.layer convertPoint:self.first.rect.origin fromLayer:_chatLabel.layer];
+    [self updatePinLayer:ctx point:firstPoint height:self.first.rect.size.height isLeft:true];
     
-    CGPoint firstpoint = [self.layer convertPoint:self.first.rect.origin fromLayer:textView.chatLabel.layer];
-    [self updatePinLayer:ctx point:firstpoint height:self.first.rect.size.height isLeft:true];
-    
-    CGPoint lastpoint = [self.layer convertPoint:self.last.rect.origin fromLayer:textView.chatLabel.layer];
-    lastpoint.x = lastpoint.x + self.last.rect.size.width;
-    [self updatePinLayer:ctx point:lastpoint height:self.last.rect.size.height isLeft:false];
+    CGPoint lastPoint = [self.layer convertPoint:self.last.rect.origin fromLayer:_chatLabel.layer];
+    lastPoint.x = lastPoint.x + self.last.rect.size.width;
+    [self updatePinLayer:ctx point:lastPoint height:self.last.rect.size.height isLeft:false];
     
 }
 
 - (void)updatePinLayer:(CGContextRef)ctx point:(CGPoint)point height:(CGFloat)height isLeft:(BOOL)isLeft {
     UIColor *color = [UIColor colorWithRed:0/255.0 green:128/255.0 blue:255/255.0 alpha:1.0];
-    CGRect roundRect = CGRectMake(point.x - 5,
-                                  isLeft?(point.y - 10):(point.y + height),
-                                  10,
-                                  10);
+    CGRect roundRect = CGRectZero;
+    if (isLeft) {
+        roundRect = CGRectMake(point.x - _radiusOfPin,
+                                      point.y - _radiusOfPin * 2 + 3,
+                                      _radiusOfPin * 2,
+                                      _radiusOfPin * 2);
+    }else{
+        roundRect = CGRectMake(point.x - _radiusOfPin,
+                                      point.y + height - 3,
+                                      _radiusOfPin * 2,
+                                      _radiusOfPin * 2);
+    }
+
     //画圆
     CGContextAddEllipseInRect(ctx, roundRect);
     [color set];
     CGContextFillPath(ctx);
     
     CGContextMoveToPoint(ctx, point.x, point.y);
-    CGContextAddLineToPoint(ctx, point.x, point.y + height);
+    CGContextAddLineToPoint(ctx, point.x, point.y + height - 3);
     CGContextSetLineWidth(ctx, 2.0);
     CGContextSetStrokeColorWithColor(ctx, color.CGColor);
     
@@ -153,16 +202,15 @@
     //添加选中视图
     SelectedView *select = [SelectedView new];
     select.frame = _textView.bounds;
-    select.first = self.glyphRangeArray.firstObject;
-    select.last = self.glyphRangeArray.lastObject;
+    select.first = self.glyphRangeArray[25];
+    select.last = self.glyphRangeArray[25];
+    
+    select.chatLabel = _textView.chatLabel;
     [_textView addSubview:select];
     
     sender.enabled = NO;
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-}
 
 
 

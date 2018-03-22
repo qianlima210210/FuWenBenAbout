@@ -39,6 +39,7 @@
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString: string];
     
     NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
+    style.lineSpacing = 3;
     style.lineBreakMode = NSLineBreakByWordWrapping;
     style.alignment = NSTextAlignmentLeft;
     
