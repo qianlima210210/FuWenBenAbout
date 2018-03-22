@@ -14,6 +14,7 @@
 //子字符串范围
 @property NSRange substringRange;
 
+//子字符对应frame(在BYChatLabel坐标系)
 @property CGRect rect;
 
 @end

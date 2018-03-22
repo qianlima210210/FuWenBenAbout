@@ -12,7 +12,14 @@
 #import "QDIMMessageTextView.h"
 #import "CTRunItem.h"
 
+typedef enum : NSUInteger {
+    NoneMovingType,
+    FirstPinMovingType,
+    LastPinMovingType,
+} MovingTypeOnSelectedView;
+
 @interface SelectedView : UIView
+
 //起点、终点项
 @property (nonatomic, strong) CTRunItem *first;
 @property (nonatomic, strong) CTRunItem *last;
@@ -24,6 +31,9 @@
 //大头针半径
 @property CGFloat radiusOfPin;
 
+//标记移动类型
+@property MovingTypeOnSelectedView movingType;
+
 @end
 
 @implementation SelectedView
@@ -34,7 +44,8 @@
         self.backgroundColor = [UIColor clearColor];
         self.opaque = NO;
         
-        _radiusOfPin = 5.0;
+        _radiusOfPin = 4.0;
+        _movingType = NoneMovingType;
     }
     return self;
 }
@@ -52,6 +63,7 @@
                                   self.first.rect.size.height + _radiusOfPin * 2);
     if (CGRectContainsPoint(firstRect, point)) {
         NSLog(@"呵呵，你摸到了左边大头针");
+        _movingType = FirstPinMovingType;
     }
     
     CGPoint lastPoint = [self.layer convertPoint:self.last.rect.origin fromLayer:_chatLabel.layer];
@@ -61,15 +73,55 @@
                                  self.last.rect.size.height + _radiusOfPin * 2);
     if (CGRectContainsPoint(lastRect, point)) {
         NSLog(@"呵呵，你摸到了右边大头针");
+        _movingType = LastPinMovingType;
     }
 }
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
+    if (_movingType != NoneMovingType) {
+        //获取开始位置
+        CGPoint point = [touches.anyObject locationInView:self];
+
+        //将point转为chatLabel中的点
+        CGPoint pointInChatLabel = [_chatLabel.layer convertPoint:point fromLayer:self.layer];
+        
+        //入股pointInChatLabel在chatLabel内，则找到对应的CTRunItem
+        if([_chatLabel.layer containsPoint:pointInChatLabel]){
+            //获取pointInChatLabel对应的CTRunItem
+            CTRunItem *item = nil;
+            for (CTRunItem *temp in _glyphRangeArray) {
+                if (CGRectContainsPoint(temp.rect, pointInChatLabel)) {
+                    item = temp;
+                    break;
+                }
+            }
+            
+            //对chatLabel的最后一行中的空白特殊处理
+            if (item == nil) {
+                item = _glyphRangeArray.lastObject;
+            }
+            
+            //重新赋值first、last
+            if (_movingType == FirstPinMovingType) {
+                _first = item;
+            }
+            
+            if (_movingType == LastPinMovingType) {
+                _last = item;
+            }
+            
+            //重绘
+            [self setNeedsDisplay];
+        }
+
+    }
     
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    //恢复初始状态
+    _movingType = NoneMovingType;
     
 }
 
@@ -80,25 +132,25 @@
     
     //将origin从标签坐标系转到自己坐标系
     CGPoint firstPoint = [self.layer convertPoint:self.first.rect.origin fromLayer:_chatLabel.layer];
-    [self updatePinLayer:ctx point:firstPoint height:self.first.rect.size.height isLeft:true];
+    [self updatePinLayer:ctx point:firstPoint lineHeight:_chatLabel.font.lineHeight isLeft:true];
     
     CGPoint lastPoint = [self.layer convertPoint:self.last.rect.origin fromLayer:_chatLabel.layer];
     lastPoint.x = lastPoint.x + self.last.rect.size.width;
-    [self updatePinLayer:ctx point:lastPoint height:self.last.rect.size.height isLeft:false];
+    [self updatePinLayer:ctx point:lastPoint lineHeight:_chatLabel.font.lineHeight isLeft:false];
     
 }
 
-- (void)updatePinLayer:(CGContextRef)ctx point:(CGPoint)point height:(CGFloat)height isLeft:(BOOL)isLeft {
+- (void)updatePinLayer:(CGContextRef)ctx point:(CGPoint)point lineHeight:(CGFloat)height isLeft:(BOOL)isLeft {
     UIColor *color = [UIColor colorWithRed:0/255.0 green:128/255.0 blue:255/255.0 alpha:1.0];
     CGRect roundRect = CGRectZero;
     if (isLeft) {
         roundRect = CGRectMake(point.x - _radiusOfPin,
-                                      point.y - _radiusOfPin * 2 + 3,
+                                      point.y - _radiusOfPin * 2,
                                       _radiusOfPin * 2,
                                       _radiusOfPin * 2);
     }else{
         roundRect = CGRectMake(point.x - _radiusOfPin,
-                                      point.y + height - 3,
+                                      point.y + height,
                                       _radiusOfPin * 2,
                                       _radiusOfPin * 2);
     }
@@ -109,7 +161,7 @@
     CGContextFillPath(ctx);
     
     CGContextMoveToPoint(ctx, point.x, point.y);
-    CGContextAddLineToPoint(ctx, point.x, point.y + height - 3);
+    CGContextAddLineToPoint(ctx, point.x, point.y + height);
     CGContextSetLineWidth(ctx, 2.0);
     CGContextSetStrokeColorWithColor(ctx, color.CGColor);
     
@@ -151,7 +203,7 @@
 
     _m = [[QDIMMessageTextModel alloc]init];
     _m.showType = 0;
-    _m.text = @"改变hr@163.com世界创造价值😱由于子视图是用自动布局的由于https://www.baidu❤️.com子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的子视图不会自我调整021-54377032的要更新他们的约束me@163.com❤️";
+    _m.text = @"    改变hr@163.com世界创造价值😱由于子视图是用自动布局的由于https://www.baidu❤️.com子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的由于子视图是用自动布局的子视图不会自我调整021-54377032的要更新他们的约束me@163.com❤️";
     _vm = [[QDIMMessageTextViewModel alloc]initWithTextModel:_m];
     
     _textView = [[QDIMMessageTextView alloc]initWithTextViewModel:_vm];
@@ -201,9 +253,11 @@
     
     //添加选中视图
     SelectedView *select = [SelectedView new];
+    //select.backgroundColor = UIColor.greenColor;
     select.frame = _textView.bounds;
-    select.first = self.glyphRangeArray[25];
-    select.last = self.glyphRangeArray[25];
+    select.glyphRangeArray = self.glyphRangeArray;
+    select.first = self.glyphRangeArray[30];
+    select.last = self.glyphRangeArray[30];
     
     select.chatLabel = _textView.chatLabel;
     [_textView addSubview:select];
