@@ -45,7 +45,7 @@
 -(void)initProperties{
     self.numberOfLines = 0;
     self.userInteractionEnabled = YES;    
-    self.backgroundColor = UIColor.orangeColor;
+    //self.backgroundColor = UIColor.orangeColor;
     
     _touchesBeganLocationMapRange = NSMakeRange(0, 0);
     

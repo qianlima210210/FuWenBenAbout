@@ -44,7 +44,7 @@ typedef enum : NSUInteger {
         self.backgroundColor = [UIColor clearColor];
         self.opaque = NO;
         
-        _radiusOfPin = 4.0;
+        _radiusOfPin = 5.0;
         _movingType = NoneMovingType;
     }
     return self;
@@ -103,15 +103,24 @@ typedef enum : NSUInteger {
             
             //重新赋值first、last
             if (_movingType == FirstPinMovingType) {
-                _first = item;
+                //判断item在数组中的索引，是否小于等于last在数组中的索引
+                NSInteger itemIndex = [_glyphRangeArray indexOfObjectIdenticalTo:item];
+                NSInteger lastIndex = [_glyphRangeArray indexOfObjectIdenticalTo:_last];
+                if (itemIndex <= lastIndex) {
+                    _first = item;
+                    [self setNeedsDisplay];
+                }
             }
             
             if (_movingType == LastPinMovingType) {
-                _last = item;
+                //判断item在数组中的索引，是否大于等于first在数组中的索引
+                NSInteger itemIndex = [_glyphRangeArray indexOfObjectIdenticalTo:item];
+                NSInteger firstIndex = [_glyphRangeArray indexOfObjectIdenticalTo:_first];
+                if (itemIndex >= firstIndex) {
+                    _last = item;
+                    [self setNeedsDisplay];
+                }
             }
-            
-            //重绘
-            [self setNeedsDisplay];
         }
 
     }
@@ -125,9 +134,33 @@ typedef enum : NSUInteger {
     
 }
 
+-(void)drawSelectedBG{
+    //先恢复默认背景
+    NSRange allRange = NSMakeRange(0, _chatLabel.attributedText.length);
+    UIColor *defColor = [UIColor whiteColor];
+    
+    [_chatLabel.textStorage addAttributes:@{NSBackgroundColorAttributeName : defColor} range:allRange];
+    [_chatLabel setNeedsDisplay];
+    
+    //在设置选中背景
+    NSRange substringRange = NSMakeRange(_first.substringRange.location, _last.substringRange.location + _last.substringRange.length - _first.substringRange.location);
+    UIColor *backColor = [UIColor colorWithRed:0.0 green:84.0 / 255.0 blue:166.0 / 255.0 alpha:0.2];
+
+    [_chatLabel.textStorage addAttributes:@{NSBackgroundColorAttributeName : backColor} range:substringRange];
+    [_chatLabel setNeedsDisplay];
+    
+    //输出处于选中的字符串
+    NSString *subString = [_chatLabel.attributedText.string substringWithRange:substringRange];
+    NSLog(@"%@",subString);
+}
+
 -(void)drawRect:(CGRect)rect{
     [super drawRect:rect];
     
+    //先绘制选中背景
+    [self drawSelectedBG];
+    
+    //在绘制起始大头针
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     //将origin从标签坐标系转到自己坐标系
@@ -243,9 +276,9 @@ typedef enum : NSUInteger {
 -(void)testBtn:(UIButton*)sender{
     //遍历数组
     for (CTRunItem *item in self.glyphRangeArray) {
-        UIColor *backColor = [UIColor colorWithRed:0.0 green:84.0 / 255.0 blue:166.0 / 255.0 alpha:0.2];
-        [_textView.chatLabel.textStorage addAttributes:@{NSBackgroundColorAttributeName : backColor} range:item.substringRange];
-        [_textView.chatLabel setNeedsDisplay];
+//        UIColor *backColor = [UIColor colorWithRed:0.0 green:84.0 / 255.0 blue:166.0 / 255.0 alpha:0.2];
+//        [_textView.chatLabel.textStorage addAttributes:@{NSBackgroundColorAttributeName : backColor} range:item.substringRange];
+//        [_textView.chatLabel setNeedsDisplay];
         
         item.rect = [_textView.chatLabel characterRectAtIndex:item.substringRange.location];
         NSLog(@"%f,%f, %f, %f", item.rect.origin.x, item.rect.origin.y, item.rect.size.width, item.rect.size.height);
@@ -254,12 +287,12 @@ typedef enum : NSUInteger {
     //添加选中视图
     SelectedView *select = [SelectedView new];
     //select.backgroundColor = UIColor.greenColor;
-    select.frame = _textView.bounds;
     select.glyphRangeArray = self.glyphRangeArray;
-    select.first = self.glyphRangeArray[30];
-    select.last = self.glyphRangeArray[30];
-    
+    select.first = self.glyphRangeArray.firstObject;
+    select.last = self.glyphRangeArray.lastObject;
     select.chatLabel = _textView.chatLabel;
+    
+    select.frame = _textView.bounds;
     [_textView addSubview:select];
     
     sender.enabled = NO;
