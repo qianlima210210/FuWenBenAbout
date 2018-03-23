@@ -59,7 +59,7 @@ typedef enum : NSUInteger {
     CGPoint firstPoint = [self.layer convertPoint:self.first.rect.origin fromLayer:_chatLabel.layer];
     CGRect firstRect = CGRectMake(firstPoint.x - _radiusOfPin,
                                   firstPoint.y - _radiusOfPin * 2,
-                                  _radiusOfPin * 2,
+                                  _radiusOfPin * 3, //考虑手指较宽，这里放大宽度
                                   self.first.rect.size.height + _radiusOfPin * 2);
     if (CGRectContainsPoint(firstRect, point)) {
         NSLog(@"呵呵，你摸到了左边大头针");
@@ -69,7 +69,7 @@ typedef enum : NSUInteger {
     CGPoint lastPoint = [self.layer convertPoint:self.last.rect.origin fromLayer:_chatLabel.layer];
     CGRect lastRect = CGRectMake(lastPoint.x + self.last.rect.size.width  - _radiusOfPin,
                                  lastPoint.y,
-                                 _radiusOfPin * 2,
+                                 _radiusOfPin * 3, //考虑手指较宽，这里放大宽度
                                  self.last.rect.size.height + _radiusOfPin * 2);
     if (CGRectContainsPoint(lastRect, point)) {
         NSLog(@"呵呵，你摸到了右边大头针");
